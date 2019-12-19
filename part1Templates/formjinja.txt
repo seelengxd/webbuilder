@@ -1,0 +1,6 @@
+{%if success:%}
+        Successfully submitted!
+        {%endif%}
+        {%if err != None%}
+        Error: {{err}}
+        {%endif%}

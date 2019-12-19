@@ -1,0 +1,36 @@
+#Write dbname on line1 etc test.db
+#Write tablename on line2 etc Test
+#Write url to submit to on line3 etc /submit
+
+#Then, for the next lines, add a query,comma separated and examples below
+#if there is a limit (etc max 50 char and etc colName = test), write test^50
+
+# ☆ヾ(*´・∀・)ﾉヾ(・∀・`*)ﾉ☆
+----------------------------
+
+#For input text
+text,nameAttribute,colName
+
+#For textarea
+textarea,nameAttribute,placeholderInTextarea,colName
+
+#For submit button
+submit
+
+#For other buttons
+button,wordInButton,href
+
+#For input image
+img,nameAttribute,colName
+
+#For dropdown box
+dropdown,name,option1,option2,option3,option4,ugettheidea,colName
+
+#To put the buttons u wrote before together side by side
+#Also fixes if ur buttons and error message are mashed together with dropdown(etc remove wrap from testcase2.txt)
+wrap
+
+#Note: Whatever your order, buttons will ALWAYS be at the bottom of the form
+#Another note: This text file must be in the same folder as builder.py.
+#For the DB, if its not manually created and moved in new folder before server.py is run, a db with all just type text will be created
+#once server.py is created please run in idle because vs code creates the db one file above for some reason
