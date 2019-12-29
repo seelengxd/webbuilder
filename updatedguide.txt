@@ -33,4 +33,3 @@ wrap
 #Note: Whatever your order, buttons will ALWAYS be at the bottom of the form
 #Another note: This text file must be in the same folder as builder.py.
 #For the DB, if its not manually created and moved in new folder before server.py is run, a db with all just type text will be created
-#once server.py is created please run in idle because vs code creates the db one file above for some reason
