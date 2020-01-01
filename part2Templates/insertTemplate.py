@@ -3,7 +3,6 @@ def submit():
 	data = request.form
 	imageNames = []	
 	try:
-		#os thing is needed for it to work when run in vs code
 		{imageCode}
 		{limitCode}
 		con = open_DB("{dbName}")
