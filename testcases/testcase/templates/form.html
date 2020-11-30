@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+            @import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+    		body, input{
+    			font-family: 'Merriweather';
+    		}
+    		form{
+    			border: 1px solid black;
+    			background-color: #a9c6f5;
+    			width: 500px;
+    			padding: 50px;
+    			margin: auto;
+    		}
+    		input{
+    			border: 1px solid black;
+    			width: 75%;
+                padding: 2px;
+                margin:2px;
+                background-color:white;
+    		}
+    		button {
+    			border: 1px solid black;
+    			padding: 5px;
+    			margin:5px;
+    		}
+    		textarea{
+    			height: 50px;
+    			width:75%;
+                padding:2px;
+                margin:2px;
+                /* user cannot screw up my hardcoded width */
+                resize:vertical;
+    		}
+    		select{
+    			border: 1px solid black;
+    			padding: 2px;
+    			width: 30%;
+                margin:2px;
+    		}
+            label {
+                /*resizeable text width */
+                display:inline-block;
+                width:15%;
+                margin:2px;
+                font-variant:small-caps;
+                overflow-wrap: break-word;
+            }
+		</style>
+	</head>
+	<body>
+		<form action="/submit" method="POST" enctype="multipart/form-data">
+			<label for="name">name: </label><input type="text" name="name">
+			<label for="test">test: </label><textarea resize="none" height="150px" name="test"></textarea>
+			<label for="image">image: </label><input type="file" name="image">
+			<label for="image2">image2: </label><input type="file" name="image2">
+			<label for="testbox">testbox: </label><select name='testbox'>
+				<option value='a'>a</option>
+				<option value='b'>b</option>
+				<option value='c'>c</option>
+			</select>
+			<div style='display:flex; justify-content:center;'>
+				<button type="submit">submit</button>
+				<a href='/'><button type='button'>cancel</button></a>
+			</div>
+			{%if success:%}
+        Successfully submitted!
+        {%endif%}
+        {%if err != None%}
+        Error: {{err}}
+        {%endif%}
+		</form>
+		
+	</body>
+
+</html>

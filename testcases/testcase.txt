@@ -1,0 +1,11 @@
+test.db
+Test
+/submit
+text,name,name^20
+textarea,test,test^50
+img,image,img_name
+img,image2,img_test2
+submit
+button,cancel,/
+wrap
+dropdown,testbox,a,b,c,testbox_res

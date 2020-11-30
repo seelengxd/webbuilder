@@ -1,3 +1,5 @@
+import os
+
 #element templates
 class Element():
     #use for input 
@@ -31,11 +33,11 @@ class Dropdown():
         return res
 
 #load templates (html css) 
-with open("part1Templates/formStructure.html") as f:
+with open(os.path.join("part1Templates", "formStructure.html")) as f:
     temp = f.read()
-with open("part1Templates/hardcodedCSS.txt") as f:
+with open(os.path.join("part1Templates",  "hardcodedCSS.txt")) as f:
     style = f.read()
-with open("part1Templates/formjinja.txt") as f:
+with open(os.path.join("part1Templates", "formjinja.txt")) as f:
     jinja = f.read()
 
 buttons = []
@@ -122,18 +124,18 @@ def createForm(file):
                 codes.append(code)
     innerForm = "\n".join(codes + buttons)
     innerForm = innerForm.replace("\n","\n"+preTabs*"\t")
-    return temp.format(jinja=jinja,style=style, formaction=formaction, form=innerForm)\
+    return temp.format(jinja=jinja, style=style, formaction=formaction, form=innerForm)\
            , imageCols, otherCols, dbName, tableName, formaction
 
 def createPython(imageCols, otherCols, dbName, tableName,formaction, to):
     #loading all templates first
-    with open("part2Templates/insertTemplate.py") as f:
+    with open(os.path.join("part2Templates", "insertTemplate.py")) as f:
         insertTemplate = f.read()
-    with open("part2Templates/overallTemplate.py") as f:
+    with open(os.path.join("part2Templates",  "overallTemplate.py")) as f:
         overallTemplate = f.read()
-    with open("part2Templates/imageTemp.py") as f:
+    with open(os.path.join("part2Templates", "imageTemp.py")) as f:
         imageTemp = f.read()
-    with open("part2Templates/limitTemp.py") as f:
+    with open(os.path.join("part2Templates", "limitTemp.py")) as f:
         limitTemp = f.read()
     createDbStuff = ",\n\t\t\t".join(["{} TEXT".format(i[0]) for i in [*imageCols, *otherCols]])
     #generating parts for insert function code
@@ -151,16 +153,20 @@ def createPython(imageCols, otherCols, dbName, tableName,formaction, to):
     completeCode = overallTemplate.format(form_url=formurl, form_template=to, otherCode=insertCode)
     return completeCode
     
-import os
 instructions = input("file name with instructions: ")
 newFile = input("new file name?: ")
 to = "form.html"
-os.mkdir(os.getcwd() + f"/{newFile}")
-os.mkdir(os.getcwd() + f"/{newFile}/templates")
-os.mkdir(os.getcwd() + f"/{newFile}/static")
-os.mkdir(os.getcwd() + f"/{newFile}/static/images")
+# os.mkdir(os.getcwd() + f"/{newFile}")
+# os.mkdir(os.getcwd() + f"/{newFile}/templates")
+# os.mkdir(os.getcwd() + f"/{newFile}/static")
+# os.mkdir(os.getcwd() + f"/{newFile}/static/images")
+os.mkdir(os.path.join(os.getcwd(), newFile))
+os.mkdir(os.path.join(os.getcwd(), newFile, 'templates'))
+os.mkdir(os.path.join(os.getcwd(), newFile, 'static'))
+os.mkdir(os.path.join(os.getcwd(), newFile, 'static', 'images'))
 with open(f"{newFile}/templates/{to}", "w") as f:
     form, *everythingElse = createForm(instructions)
     f.write(form)
 with open(f"{newFile}/server.py", "w") as f:
     f.write(createPython(*everythingElse, to))
+

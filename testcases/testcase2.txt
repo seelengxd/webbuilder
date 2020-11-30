@@ -1,0 +1,11 @@
+test2.db
+test2
+/submit
+text,name,name
+textarea,desc,write description here,desc
+button,test,/
+img,image name,image
+img,another image,image2
+dropdown,whatever,a,b,c,d,letters
+submit
+wrap

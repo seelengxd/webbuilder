@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+            @import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+    		body, input{
+    			font-family: 'Merriweather';
+    		}
+    		form{
+    			border: 1px solid black;
+    			background-color: #a9c6f5;
+    			width: 500px;
+    			padding: 50px;
+    			margin: auto;
+    		}
+    		input{
+    			border: 1px solid black;
+    			width: 75%;
+                padding: 2px;
+                margin:2px;
+                background-color:white;
+    		}
+    		button {
+    			border: 1px solid black;
+    			padding: 5px;
+    			margin:5px;
+    		}
+    		textarea{
+    			height: 50px;
+    			width:75%;
+                padding:2px;
+                margin:2px;
+                /* user cannot screw up my hardcoded width */
+                resize:vertical;
+    		}
+    		select{
+    			border: 1px solid black;
+    			padding: 2px;
+    			width: 30%;
+                margin:2px;
+    		}
+            label {
+                /*resizeable text width */
+                display:inline-block;
+                width:15%;
+                margin:2px;
+                font-variant:small-caps;
+                overflow-wrap: break-word;
+            }
+		</style>
+	</head>
+	<body>
+		<form action="/submit" method="POST" enctype="multipart/form-data">
+			<label for="name">name: </label><input type="text" name="name">
+			<label for="desc">desc: </label><textarea resize="none" height="150px" name="desc">write description here</textarea>
+			<label for="image name">image name: </label><input type="file" name="image name">
+			<label for="another image">another image: </label><input type="file" name="another image">
+			<label for="whatever">whatever: </label><select name='whatever'>
+				<option value='a'>a</option>
+				<option value='b'>b</option>
+				<option value='c'>c</option>
+				<option value='d'>d</option>
+			</select>
+			<div style='display:flex; justify-content:center;'>
+				<a href='/'><button type='button'>test</button></a>
+				<button type="submit">submit</button>
+			</div>
+			{%if success:%}
+        Successfully submitted!
+        {%endif%}
+        {%if err != None%}
+        Error: {{err}}
+        {%endif%}
+		</form>
+		
+	</body>
+
+</html>
